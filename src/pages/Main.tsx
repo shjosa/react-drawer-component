@@ -7,16 +7,16 @@ import { Body, Item } from './Main.styles';
 interface SidebarItemProps {
     children?: JSX.Element;
     text: string;
-    isChild?: number;
+    paddingSize?: number;
 }
 
-const SidebarItem = ({ children, text, isChild }: SidebarItemProps) => {
+const SidebarItem = ({ children, text, paddingSize }: SidebarItemProps) => {
 
     const [state, setState] = useState("enabled");
 
     const childrenArr = React.Children.toArray(children).map((child) =>
         React.cloneElement(child as React.ReactElement<SidebarItemProps, string | JSXElementConstructor<any>>, {
-          isChild: isChild === undefined ? 1 : isChild + 1,
+          paddingSize: paddingSize === undefined ? 1 : paddingSize + 1,
         })
     );
 
@@ -27,7 +27,7 @@ const SidebarItem = ({ children, text, isChild }: SidebarItemProps) => {
 
     return (
         <>
-            <Item isChild={isChild} onMouseEnter={() => console.log(text + " " + isChild)}>
+            <Item paddingSize={paddingSize}>
                 <div>{text}</div>
             </Item>
             {childrenArr}
