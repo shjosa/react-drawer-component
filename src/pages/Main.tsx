@@ -4,12 +4,13 @@ import { Header } from '../components/Header';
 import { Body, Item } from './Main.styles';
 
 interface SidebarItemProps {
-    children?: JSX.Element;
     text: string;
     paddingSize?: number;
+    icon?: string;
+    onClick?: () => void;
 }
 
-const SidebarItem = ({ children, text, paddingSize }: SidebarItemProps) => {
+const SidebarItem = ({ children, text, paddingSize, icon, onClick }: React.PropsWithChildren<SidebarItemProps>) => {
 
     const childrenArr = React.Children.toArray(children).map((child) =>
         React.cloneElement(child as React.ReactElement<SidebarItemProps, string | JSXElementConstructor<any>>, {
@@ -19,8 +20,9 @@ const SidebarItem = ({ children, text, paddingSize }: SidebarItemProps) => {
 
     return (
         <>
-            <Item paddingSize={paddingSize} disabled>
-                <div>{text}</div>
+            <Item paddingSize={paddingSize} onClick={onClick}>
+                <span>{text}</span>
+                { icon && <span>{icon}</span> }
             </Item>
             {childrenArr}
         </>
@@ -28,15 +30,25 @@ const SidebarItem = ({ children, text, paddingSize }: SidebarItemProps) => {
     );
 }
 
+const CollapsableSidebarItem = ({ children, text, paddingSize }: Omit<React.PropsWithChildren<SidebarItemProps>, 'icon' | 'onClick'>) => {
+    const [expanded, setExpanded] = useState(false);
+
+    return <SidebarItem icon={expanded ? 'e' : 'c'} text={text} onClick={() => setExpanded(v => !v)}>
+        {expanded && <>
+            {children}
+        </>}
+    </SidebarItem>
+}
+
 export const Main = () => {
     return (
         <Body>
             <Header />
-            <SidebarItem text="Primary">
+            <CollapsableSidebarItem text="Primary">
                 <SidebarItem text="Secondary">
                     <SidebarItem text="Tertiary"></SidebarItem>
                 </SidebarItem>
-            </SidebarItem>
+            </CollapsableSidebarItem>
             <SidebarItem text="Primary">
                 <SidebarItem text="Secondary"></SidebarItem>
             </SidebarItem>

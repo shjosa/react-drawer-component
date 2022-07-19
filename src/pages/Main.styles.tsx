@@ -8,7 +8,7 @@ padding: auto;
 `;
 
 export const Item = styled.button<{ paddingSize: number | undefined }>`
-    display: block;
+    display: flex;
     width: 100%;
     text-align: justify;
     border: none;
@@ -17,6 +17,7 @@ export const Item = styled.button<{ paddingSize: number | undefined }>`
     padding-bottom: 0.5rem;
     font-family: Arial, sans-serif;
     font-size: 1.2rem;
+    justify-content: space-between;
     &:hover:not(:disabled) {
         background-color: lightgrey;
     };
