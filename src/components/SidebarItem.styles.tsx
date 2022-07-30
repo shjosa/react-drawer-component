@@ -1,0 +1,27 @@
+import styled from "styled-components";
+
+export const Item = styled.button<{ paddingSize: number | undefined }>`
+    display: flex;
+    width: 100%;
+    text-align: justify;
+    border: none;
+    padding-left: ${props => (props.paddingSize === undefined ? 1 : props.paddingSize + 1)}rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-family: Arial, sans-serif;
+    font-size: 1.2rem;
+    justify-content: space-between;
+    &:hover:not(:disabled) {
+        background-color: lightgrey;
+    };
+    &:active:not(:disabled) {
+        background-color: lightblue;
+    }
+    &:focus {
+        background-color: lightcyan;
+        outline-color: blue;
+    }
+    &:disabled {
+        color: grey;
+    }
+`;
