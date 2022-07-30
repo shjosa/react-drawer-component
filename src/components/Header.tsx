@@ -11,7 +11,7 @@ export const Header = () => {
     return (
         <>
             <Title>
-                Temp
+                Header
             </Title>
             <hr />
         </>

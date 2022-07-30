@@ -3,7 +3,6 @@ import { JSXElementConstructor } from 'react';
 import { Header } from '../components/Header';
 import { Body, Item } from './Main.styles';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
-import { IconType } from 'react-icons';
 
 interface SidebarItemProps {
     text: string;
