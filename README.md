@@ -1,6 +1,6 @@
 # Seaside Drawer Component
 
-This is a feature complete drawer component that I built for [OceanBit's](https://oceanbit.dev/) UI library, [Seaside](github.com/oceanbit/seaside).
+This is a feature complete drawer component that I built for [OceanBit's](https://oceanbit.dev/) UI library, [Seaside](https://github.com/oceanbit/seaside).
 
 This set of components supports:
 - Proper focused state
